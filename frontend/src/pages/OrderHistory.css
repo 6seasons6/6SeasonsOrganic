@@ -1,0 +1,163 @@
+/* Organic accent background and floating leaves */
+/* Amazon-style order history layout with organic theme */
+.order-history-container {
+  max-width: 980px;
+  margin: 48px auto;
+  background: #fff;
+  border-radius: 18px;
+  box-shadow: 0 2px 16px rgba(108,179,63,0.09);
+  padding: 2.5rem 2rem;
+  position: relative;
+  overflow: visible;
+}
+.order-history-title {
+  font-size: 2.1rem;
+  font-weight: 800;
+  color: #6cb33f;
+  margin-bottom: 2.2rem;
+  font-family: 'Montserrat', 'Nunito', sans-serif;
+  letter-spacing: 1px;
+}
+.order-history-container::before,
+.order-history-container::after {
+  content: '';
+  position: absolute;
+  width: 120px;
+  height: 120px;
+  background: url('https://cdn.pixabay.com/photo/2017/01/06/19/15/leaf-1956664_1280.png') no-repeat center/contain;
+  opacity: 0.13;
+  z-index: 0;
+}
+.order-history-container::before {
+  left: -40px;
+  top: -30px;
+  transform: rotate(-18deg);
+}
+.order-history-container::after {
+  right: -40px;
+  bottom: -30px;
+  transform: rotate(12deg);
+}
+.order-history-loading, .order-history-error, .order-history-empty {
+  text-align: center;
+  font-size: 1.25rem;
+  color: #e53935;
+  margin: 2.2rem 0;
+  font-family: 'Montserrat', 'Nunito', sans-serif;
+  letter-spacing: 1px;
+}
+.order-history-list {
+  list-style: none;
+  padding: 0;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+.order-history-item {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  background: #f7fbe7;
+  border-radius: 14px;
+  box-shadow: 0 2px 12px rgba(108,179,63,0.07);
+  padding: 1.5rem 2rem;
+  border: 1.5px solid #e0e0e0;
+  position: relative;
+  transition: box-shadow 0.2s, transform 0.2s;
+  z-index: 1;
+}
+.order-history-item:hover {
+  box-shadow: 0 6px 24px rgba(108,179,63,0.13);
+  transform: translateY(-2px) scale(1.01);
+}
+.order-history-meta {
+  min-width: 220px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  font-size: 1.08rem;
+  color: #333;
+  font-family: 'Montserrat', 'Nunito', sans-serif;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  margin-right: 32px;
+}
+.order-history-meta .order-date {
+  color: #6cb33f;
+  font-weight: 700;
+}
+.order-history-meta .order-status {
+  color: #e53935;
+  font-weight: 700;
+}
+.order-history-products {
+  flex: 1;
+}
+.order-history-products-title {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: #6cb33f;
+  margin-bottom: 0.7rem;
+  font-family: 'Montserrat', 'Nunito', sans-serif;
+}
+.order-history-products ul {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 18px;
+  list-style: none;
+  padding: 0;
+  z-index: 1;
+}
+.order-history-product {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  background: #fff;
+  border-radius: 10px;
+  padding: 10px 18px;
+  box-shadow: 0 1px 8px rgba(108,179,63,0.09);
+  font-family: 'Montserrat', 'Nunito', sans-serif;
+  font-size: 1.08rem;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+  position: relative;
+  border: 1px solid #e0e0e0;
+  transition: box-shadow 0.2s, transform 0.2s;
+}
+.order-history-product:hover {
+  box-shadow: 0 4px 18px rgba(108,179,63,0.13);
+  transform: scale(1.03);
+}
+.order-history-product-img {
+  width: 60px;
+  height: 60px;
+  object-fit: cover;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(108,179,63,0.10);
+  background: #f7fbe7;
+  border: 1px solid #e0e0e0;
+}
+.order-history-reorder-btn {
+  margin-top: 0.5rem;
+  background: linear-gradient(90deg,#ffe066 60%,#6cb33f 100%);
+  color: #333;
+  font-weight: 700;
+  font-size: 1.08rem;
+  border: none;
+  border-radius: 1.2rem;
+  padding: 10px 28px;
+  cursor: pointer;
+  box-shadow: 0 2px 8px rgba(108,179,63,0.10);
+  transition: background 0.2s, transform 0.2s;
+  font-family: 'Montserrat', 'Nunito', sans-serif;
+  letter-spacing: 1px;
+  position: relative;
+  z-index: 2;
+  border: 1px solid #e0e0e0;
+}
+.order-history-reorder-btn:hover {
+  background: linear-gradient(90deg,#e53935 60%,#ffe066 100%);
+  color: #fff;
+  transform: scale(1.04);
+}
