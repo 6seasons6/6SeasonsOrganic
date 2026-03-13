@@ -374,12 +374,12 @@ const Products = () => {
                       padding: "0.6rem 1.5rem",
                       fontSize: 17,
                       fontWeight: 700,
+                      marginTop: 10,
                       boxShadow: "0 2px 8px rgba(108,179,63,0.10)",
                       display: "flex",
                       alignItems: "center",
                       justifyContent: "space-between",
                       width: "100%",
-                      marginTop: "auto",
                       gap: 12,
                     }}
                   >
