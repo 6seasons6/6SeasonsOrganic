@@ -27,7 +27,7 @@ app.use("/api/orders", ordersRoute);
 // MongoDB Atlas connection
 const mongoURI =
   process.env.MONGO_URI ||
-  "mongodb+srv://fairfederations2609_db_user:Ananya2626.@cluster0.md5bemy.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0";
+  "mongodb+srv://fairfederations2609_db_user:Ananya2626.@cluster0.md5bemy.mongodb.net/?appName=Cluster0";
 
 mongoose
   .connect(mongoURI, {
@@ -59,7 +59,13 @@ app.use("/api/address", addressRoute);
 
 // Wishlist API route
 const wishlistRoute = require("./routes/wishlist");
+// Newsletter API route
+const newsletterRoute = require("./routes/newsletter");
+app.use("/api/newsletter", newsletterRoute);
 app.use("/api/wishlist", wishlistRoute);
+// Visitor API route
+const visitorRoute = require("./routes/visitor");
+app.use("/api/visitor", visitorRoute);
 
 app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);
