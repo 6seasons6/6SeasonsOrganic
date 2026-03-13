@@ -4,7 +4,6 @@ import "./Home.css";
 import ProductCard from "../components/ProductCard";
 import BlogSection from "../components/BlogSection";
 import Modal from "react-modal";
-import { FaLeaf, FaSeedling, FaCube, FaHotjar } from "react-icons/fa";
 import HomePopper from "../components/HomePopper";
 const organicFacts = [
   "Organic farming helps preserve biodiversity and soil health.",
@@ -20,7 +19,7 @@ function OrganicFactTicker() {
   useEffect(() => {
     const timer = setInterval(
       () => setIdx((i) => (i + 1) % organicFacts.length),
-      4200
+      4200,
     );
     return () => clearInterval(timer);
   }, []);
@@ -62,7 +61,7 @@ function OrganicQuoteCarousel() {
   useEffect(() => {
     const timer = setInterval(
       () => setIdx((i) => (i + 1) % organicQuotes.length),
-      5000
+      5000,
     );
     return () => clearInterval(timer);
   }, []);
@@ -75,7 +74,7 @@ function OrganicQuoteCarousel() {
 }
 
 const Home = () => {
-  const navigate = require('react-router-dom').useNavigate();
+  const navigate = require("react-router-dom").useNavigate();
   // Free sample modal state
   const [sampleOpen, setSampleOpen] = useState(false);
   const [activeTab, setActiveTab] = useState("honey");
@@ -119,10 +118,10 @@ const Home = () => {
     setLoading(true);
     Promise.all([
       fetch("http://localhost:5000/api/products/featured").then((res) =>
-        res.json()
+        res.json(),
       ),
       fetch("http://localhost:5000/api/products/bestsellers").then((res) =>
-        res.json()
+        res.json(),
       ),
     ]).then(([featuredData, bestData]) => {
       setFeatured(featuredData);
@@ -134,7 +133,18 @@ const Home = () => {
   return (
     <div className="home-container">
       {/* Free Sample Popup Trigger */}
-      <button className="sample-lead-btn" style={{position:'fixed',bottom:'32px',right:'32px',zIndex:9999}} onClick={()=>setSampleOpen(true)}>Try a Free Sample</button>
+      <button
+        className="sample-lead-btn"
+        style={{
+          position: "fixed",
+          bottom: "32px",
+          right: "32px",
+          zIndex: 9999,
+        }}
+        onClick={() => setSampleOpen(true)}
+      >
+        Try a Free Sample
+      </button>
 
       <Modal
         isOpen={sampleOpen}
@@ -188,7 +198,7 @@ const Home = () => {
                     </button>
                   )}
                 </div>
-              )
+              ),
             )}
           </div>
           <div className="sample-modal-summary">
@@ -196,7 +206,10 @@ const Home = () => {
             <button
               className="sample-modal-continue"
               disabled={selectedProducts.length === 0}
-              onClick={() => { setSampleOpen(false); navigate('/sample-lead'); }}
+              onClick={() => {
+                setSampleOpen(false);
+                navigate("/sample-lead");
+              }}
             >
               Continue
             </button>

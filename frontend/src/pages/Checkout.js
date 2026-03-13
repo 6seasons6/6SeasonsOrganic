@@ -2,8 +2,6 @@ import React, { useEffect, useState } from "react";
 import { useCart } from "../contexts/CartContext";
 import { useAuth } from "../contexts/AuthContext";
 
-import { useNavigate } from "react-router-dom";
-
 const Checkout = () => {
   // Handle place order button click
   const handlePlaceOrder = async () => {
@@ -12,28 +10,28 @@ const Checkout = () => {
       user: user ? { uid: user.uid, email: user.email } : null,
       address: form,
       shippingMethod,
-      paymentMethod: paymentSuccess ? 'razorpay' : 'cod',
-      paymentStatus: paymentSuccess ? 'paid' : 'pending',
+      paymentMethod: paymentSuccess ? "razorpay" : "cod",
+      paymentStatus: paymentSuccess ? "paid" : "pending",
       cart,
-      total: cartTotal + (shippingMethod === 'express' ? 99 : 0),
+      total: cartTotal + (shippingMethod === "express" ? 99 : 0),
       placedAt: new Date().toISOString(),
     };
     try {
-      const res = await fetch('http://localhost:5000/api/orders', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
+      const res = await fetch("http://localhost:5000/api/orders", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
         body: JSON.stringify(orderData),
       });
       if (res.ok) {
         // Send email to owner and customer (handled by backend)
         clearCart();
-        alert('Order placed successfully!');
-        window.location.href = '/'; // Redirect to homepage
+        alert("Order placed successfully!");
+        window.location.href = "/"; // Redirect to homepage
       } else {
-        alert('Failed to place order. Please try again.');
+        alert("Failed to place order. Please try again.");
       }
     } catch (err) {
-      alert('Error placing order. Please try again.');
+      alert("Error placing order. Please try again.");
     }
   };
   const { cart, cartTotal, clearCart } = useCart();
@@ -565,7 +563,7 @@ const Checkout = () => {
                         currency: "INR",
                         receipt: "order_rcptid_11",
                       }),
-                    }
+                    },
                   );
                   const data = await res.json();
                   if (!data.id) {

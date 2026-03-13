@@ -304,11 +304,37 @@ const Products = () => {
                     position: "relative",
                   }}
                 >
-                  {product.discountedPrice && product.discountedPrice < product.price && (
-                    <div className="product-discount-badge" style={{position:'absolute',top:12,right:12,background:'linear-gradient(90deg,#e53935,#ffe066 90%)',color:'#fff',fontSize:'1rem',fontWeight:800,padding:'6px 16px',borderRadius:'1.2rem 1.2rem 1.2rem 0',boxShadow:'0 2px 8px rgba(229,57,53,0.10)',zIndex:2,letterSpacing:1,animation:'badgePop 0.7s cubic-bezier(.23,1.01,.32,1) both'}}>
-                      -{Math.round(((product.price - product.discountedPrice) / product.price) * 100)}%
-                    </div>
-                  )}
+                  {product.discountedPrice &&
+                    product.discountedPrice < product.price && (
+                      <div
+                        className="product-discount-badge"
+                        style={{
+                          position: "absolute",
+                          top: 12,
+                          right: 12,
+                          background:
+                            "linear-gradient(90deg,#e53935,#ffe066 90%)",
+                          color: "#fff",
+                          fontSize: "1rem",
+                          fontWeight: 800,
+                          padding: "6px 16px",
+                          borderRadius: "1.2rem 1.2rem 1.2rem 0",
+                          boxShadow: "0 2px 8px rgba(229,57,53,0.10)",
+                          zIndex: 2,
+                          letterSpacing: 1,
+                          animation:
+                            "badgePop 0.7s cubic-bezier(.23,1.01,.32,1) both",
+                        }}
+                      >
+                        -
+                        {Math.round(
+                          ((product.price - product.discountedPrice) /
+                            product.price) *
+                            100,
+                        )}
+                        %
+                      </div>
+                    )}
                   <img
                     src={product.imageUrl}
                     alt={product.name}
@@ -348,7 +374,6 @@ const Products = () => {
                       padding: "0.6rem 1.5rem",
                       fontSize: 17,
                       fontWeight: 700,
-                      marginTop: 10,
                       boxShadow: "0 2px 8px rgba(108,179,63,0.10)",
                       display: "flex",
                       alignItems: "center",
@@ -396,7 +421,7 @@ const Products = () => {
                           {Math.round(
                             ((product.price - product.discountedPrice) /
                               product.price) *
-                              100
+                              100,
                           )}
                           %
                         </span>
@@ -432,24 +457,55 @@ const Products = () => {
                     <button
                       className="wishlist-heart-btn"
                       onClick={(e) => handleAddToWishlist(e, product)}
-                      disabled={wishlistLoading || wishlist?.some((i) => i._id === product._id)}
-                      aria-label={wishlist?.some((i) => i._id === product._id) ? "Wishlisted" : "Add to Wishlist"}
+                      disabled={
+                        wishlistLoading ||
+                        wishlist?.some((i) => i._id === product._id)
+                      }
+                      aria-label={
+                        wishlist?.some((i) => i._id === product._id)
+                          ? "Wishlisted"
+                          : "Add to Wishlist"
+                      }
                       style={{
-                        background: 'none',
-                        border: 'none',
+                        background: "none",
+                        border: "none",
                         padding: 0,
                         marginLeft: 8,
-                        cursor: wishlist?.some((i) => i._id === product._id) ? 'not-allowed' : 'pointer',
-                        outline: 'none',
-                        display: 'flex',
-                        alignItems: 'center',
-                        justifyContent: 'center',
+                        cursor: wishlist?.some((i) => i._id === product._id)
+                          ? "not-allowed"
+                          : "pointer",
+                        outline: "none",
+                        display: "flex",
+                        alignItems: "center",
+                        justifyContent: "center",
                       }}
                     >
                       {wishlist?.some((i) => i._id === product._id) ? (
-                        <svg width="28" height="28" viewBox="0 0 24 24" fill="#e53935" stroke="#e53935" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M12 21C12 21 4 13.36 4 8.5C4 5.42 6.42 3 9.5 3C11.24 3 12.91 3.81 14 5.08C15.09 3.81 16.76 3 18.5 3C21.58 3 24 5.42 24 8.5C24 13.36 16 21 16 21H12Z"/></svg>
+                        <svg
+                          width="28"
+                          height="28"
+                          viewBox="0 0 24 24"
+                          fill="#e53935"
+                          stroke="#e53935"
+                          strokeWidth="2"
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                        >
+                          <path d="M12 21C12 21 4 13.36 4 8.5C4 5.42 6.42 3 9.5 3C11.24 3 12.91 3.81 14 5.08C15.09 3.81 16.76 3 18.5 3C21.58 3 24 5.42 24 8.5C24 13.36 16 21 16 21H12Z" />
+                        </svg>
                       ) : (
-                        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#e53935" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M12 21C12 21 4 13.36 4 8.5C4 5.42 6.42 3 9.5 3C11.24 3 12.91 3.81 14 5.08C15.09 3.81 16.76 3 18.5 3C21.58 3 24 5.42 24 8.5C24 13.36 16 21 16 21H12Z"/></svg>
+                        <svg
+                          width="28"
+                          height="28"
+                          viewBox="0 0 24 24"
+                          fill="none"
+                          stroke="#e53935"
+                          strokeWidth="2"
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                        >
+                          <path d="M12 21C12 21 4 13.36 4 8.5C4 5.42 6.42 3 9.5 3C11.24 3 12.91 3.81 14 5.08C15.09 3.81 16.76 3 18.5 3C21.58 3 24 5.42 24 8.5C24 13.36 16 21 16 21H12Z" />
+                        </svg>
                       )}
                     </button>
                   </div>
